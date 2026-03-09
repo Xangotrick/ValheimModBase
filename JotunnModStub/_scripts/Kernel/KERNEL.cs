@@ -18,8 +18,8 @@ using UnityEngine.UI;
 public class KERNEL : BaseUnityPlugin
 {
     #region build info
-    public const string pluginGUID = "a";
-    public const string pluginName = "a";
+    public static string pluginGUID  {get {return foldername;}}
+    public static string pluginName  { get {return foldername;}}
     public const string pluginVersion = "1.0.0";
     public static string foldername { get { return MOD_OPTIONS.MODNAME; } }
 
