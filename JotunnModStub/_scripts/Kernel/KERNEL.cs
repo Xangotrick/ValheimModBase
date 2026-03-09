@@ -21,7 +21,7 @@ public class KERNEL : BaseUnityPlugin
     public const string pluginGUID = "a";
     public const string pluginName = "a";
     public const string pluginVersion = "1.0.0";
-    public const string foldername = "TemplateName";
+    public static string foldername { get { return MOD_OPTIONS.MODNAME; } }
 
     public static string filename { get { return foldername + "_"; } }
     public static string path_modfolder { get { return Application.dataPath.Replace("valheim_Data", "BepInEx") + "/plugins/" + foldername + "/"; } }
