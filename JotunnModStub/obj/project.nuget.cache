@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "7hZxtnmDeBo=",
+  "success": true,
+  "projectFilePath": "D:\\Valheim Modding\\Projects\\Template\\JotunnModStub\\TemplateName.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Michael\\.nuget\\packages\\jotunnlib\\2.27.1\\jotunnlib.2.27.1.nupkg.sha512"
+  ],
+  "logs": []
+}
