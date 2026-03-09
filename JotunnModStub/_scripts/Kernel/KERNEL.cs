@@ -13,13 +13,11 @@ using UnityEngine.UI;
 
 
 
-[BepInPlugin(pluginGUID, pluginName, pluginVersion)]
+[BepInPlugin(MOD_OPTIONS.MODNAME, MOD_OPTIONS.MODNAME, pluginVersion)]
 [BepInDependency(Jotunn.Main.ModGuid)]
 public class KERNEL : BaseUnityPlugin
 {
     #region build info
-    public static string pluginGUID  {get {return foldername;}}
-    public static string pluginName  { get {return foldername;}}
     public const string pluginVersion = "1.0.0";
     public static string foldername { get { return MOD_OPTIONS.MODNAME; } }
 
@@ -49,11 +47,11 @@ public class KERNEL : BaseUnityPlugin
     }
 
 
-    private readonly Harmony _HarmonyInstance = new Harmony(pluginGUID);
-    public static ManualLogSource logger = BepInEx.Logging.Logger.CreateLogSource(pluginName);
+    private readonly Harmony _HarmonyInstance = new Harmony(MOD_OPTIONS.MODNAME);
+    public static ManualLogSource logger = BepInEx.Logging.Logger.CreateLogSource(MOD_OPTIONS.MODNAME);
     private void _BuildInfo()
     {
-        XLOG.message("building the mod: " + pluginName);
+        XLOG.message("building the mod: " + MOD_OPTIONS.MODNAME);
         Debug.Log("te2st");
         Assembly assembly = Assembly.GetExecutingAssembly();
         _HarmonyInstance.PatchAll(assembly);
