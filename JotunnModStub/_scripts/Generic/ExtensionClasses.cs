@@ -351,3 +351,30 @@ public static class Extended_StylePalette
         return astyle;
     }
 }
+
+
+public class BetterStatus : StatusEffect
+{
+
+    public bool is_quitting = false;
+    public override void Setup(Character character)
+    {
+        base.Setup(character);
+        if (m_character.transform.root == Player.m_localPlayer.transform.root)
+        {
+        }
+    }
+    public virtual void OnStatManagerBuild()
+    {
+
+    }
+    public override void Stop()
+    {
+        is_quitting = true;
+        if (m_character.transform.root == Player.m_localPlayer.transform.root)
+        {
+        }
+        base.Stop();
+    }
+
+}
