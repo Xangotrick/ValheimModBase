@@ -72,8 +72,9 @@ namespace mod_data
         private static string[] bundle_names = new string[]
         {
             "bundle_fx",
-            "bundle_ui"
+            "bundle_ui" 
         };
+
 
         public static AssetBundle bundle_fx;
         public static AssetBundle bundle_ui;
@@ -83,7 +84,19 @@ namespace mod_data
         {
             foreach (string astring in bundle_names)
             {
-                load_bundle(astring);
+                bool found_match = false;
+                foreach (AssetBundle bundle in AssetBundle.GetAllLoadedAssetBundles())
+                {
+                    Debug.Log(bundle.name);
+                    if (bundle.name == astring)
+                        typeof(Data).GetField(astring).SetValue(null, bundle);
+                        found_match = true;
+                        continue;
+                }
+                if (!found_match)
+                {
+                    load_bundle(astring);
+                }
             }
             XLOG.message("lang");
             load_language_pack();
