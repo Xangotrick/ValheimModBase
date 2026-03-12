@@ -33,9 +33,12 @@ public class NetClass
     }
     public void RPC_REGISTRY()
     {
-        ZRoutedRpc.instance.Register("ClientRequest", new Action<long, ZPackage>(RPC_ClientRequestServer)); // Our Server RPC for CTS
-        ZRoutedRpc.instance.Register("ClientSendServer", new Action<long, ZPackage>(RPC_ClientSendServer)); // Our Server RPC for STC
-        ZRoutedRpc.instance.Register("SendNetObjData", new Action<long, ZPackage>(RPC_SendNetObjDataClient)); // Our Mock Client Function
+        if(MOD_OPTIONS.MASTER_MOD)
+        {
+            ZRoutedRpc.instance.Register("ClientRequest", new Action<long, ZPackage>(RPC_ClientRequestServer)); // Our Server RPC for CTS
+            ZRoutedRpc.instance.Register("ClientSendServer", new Action<long, ZPackage>(RPC_ClientSendServer)); // Our Server RPC for STC
+            ZRoutedRpc.instance.Register("SendNetObjData", new Action<long, ZPackage>(RPC_SendNetObjDataClient)); // Our Mock Client Function
+        }
 
     }
     public static bool is_server

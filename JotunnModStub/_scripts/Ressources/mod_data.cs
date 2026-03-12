@@ -127,7 +127,7 @@ namespace mod_data
         {
             return;
 
-            string path = "BepInEx/plugins/" + KERNEL.foldername + "/Localization/French/";
+            string path = "BepInEx/plugins/Localization/French/";
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);

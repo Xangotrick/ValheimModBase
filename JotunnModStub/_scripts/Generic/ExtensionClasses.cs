@@ -352,29 +352,17 @@ public static class Extended_StylePalette
     }
 }
 
-
-public class BetterStatus : StatusEffect
+public static class CharacterExtension
 {
-
-    public bool is_quitting = false;
-    public override void Setup(Character character)
+    /// <summary>
+    /// Force l'animation d'un humanoide, par un "trigger".
+    /// </summary>
+    /// <param name="humanoid"></param>
+    /// <param name="trigger"></param>
+    public static void EX_SetTrigger(this Character humanoid, string trigger)
     {
-        base.Setup(character);
-        if (m_character.transform.root == Player.m_localPlayer.transform.root)
-        {
-        }
-    }
-    public virtual void OnStatManagerBuild()
-    {
+        ZSyncAnimation m_zanim = (ZSyncAnimation)Traverse.Create(humanoid).Field("m_zanim").GetValue();
 
+        m_zanim.SetTrigger(trigger);
     }
-    public override void Stop()
-    {
-        is_quitting = true;
-        if (m_character.transform.root == Player.m_localPlayer.transform.root)
-        {
-        }
-        base.Stop();
-    }
-
 }

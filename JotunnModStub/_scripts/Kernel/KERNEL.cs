@@ -17,6 +17,7 @@ using UnityEngine.UI;
 [BepInDependency(Jotunn.Main.ModGuid)]
 public class KERNEL : BaseUnityPlugin
 {
+    public static KERNEL instance;
     #region build info
     public const string pluginVersion = "1.0.0";
     public static string foldername { get { return MOD_OPTIONS.MODNAME; } }
@@ -70,6 +71,8 @@ public class KERNEL : BaseUnityPlugin
     {
         _BuildInfo();   ///Handles Mod Version/Name
 
+        instance = this;
+
         ManOption.Load();
         new ManApp();
 
@@ -81,6 +84,8 @@ public class KERNEL : BaseUnityPlugin
 
         //LOAD RESSOURCES
         PrefabManager.OnVanillaPrefabsAvailable += load_assets;
+
+        CustomStatusEffects.U.awake();
 
         Main.Awake();
     }
