@@ -87,7 +87,7 @@ public class CustomStatusEffects
             if(max_eitre < 20)
             {
                 typeof(Player).GetMethod("SetMaxEitr", BindingFlags.NonPublic | BindingFlags.Instance).Invoke(m_character as Player, new object[] { 20, false });
-            }*/
+            }
         }
 
         public override void Stop()
