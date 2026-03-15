@@ -21,6 +21,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Logger = Jotunn.Logger;
 
+
 namespace mod_data
 {
     public class U
@@ -76,19 +77,23 @@ namespace mod_data
         };
 
 
+
         public static AssetBundle bundle_fx;
         public static AssetBundle bundle_ui;
+
 
 
         public static void data_awake()
         {
             foreach (string astring in bundle_names)
             {
+                Debug.Log("loading: "+ astring);
                 bool found_match = false;
                 foreach (AssetBundle bundle in AssetBundle.GetAllLoadedAssetBundles())
                 {
                     Debug.Log(bundle.name);
                     if (bundle.name == astring)
+                        Debug.Log("found!");
                         typeof(Data).GetField(astring).SetValue(null, bundle);
                         found_match = true;
                         continue;
@@ -125,8 +130,6 @@ namespace mod_data
 
         public static void load_language_pack()
         {
-            return;
-
             string path = "BepInEx/plugins/Localization/French/";
             if (!Directory.Exists(path))
             {

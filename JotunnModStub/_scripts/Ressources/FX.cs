@@ -79,6 +79,8 @@ class FX
 
         return returner;
     }
+
+
     public static FootStep.StepEffect GetFootFXList(string name, FootStep.MotionType type_motion, FootStep.GroundMaterial ground_mat, params string[] fx_names)
     {
         FootStep.StepEffect returner = new FootStep.StepEffect();

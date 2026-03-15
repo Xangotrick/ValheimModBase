@@ -35,9 +35,9 @@ public class NetClass
     {
         if(MOD_OPTIONS.MASTER_MOD)
         {
-            ZRoutedRpc.instance.Register("ClientRequest", new Action<long, ZPackage>(RPC_ClientRequestServer)); // Our Server RPC for CTS
-            ZRoutedRpc.instance.Register("ClientSendServer", new Action<long, ZPackage>(RPC_ClientSendServer)); // Our Server RPC for STC
-            ZRoutedRpc.instance.Register("SendNetObjData", new Action<long, ZPackage>(RPC_SendNetObjDataClient)); // Our Mock Client Function
+            ZRoutedRpc.instance.Register(MOD_OPTIONS.MODNAME + "_ClientRequest", new Action<long, ZPackage>(RPC_ClientRequestServer)); // Our Server RPC for CTS
+            ZRoutedRpc.instance.Register(MOD_OPTIONS.MODNAME + "_ClientSendServer", new Action<long, ZPackage>(RPC_ClientSendServer)); // Our Server RPC for STC
+            ZRoutedRpc.instance.Register(MOD_OPTIONS.MODNAME + "_SendNetObjData", new Action<long, ZPackage>(RPC_SendNetObjDataClient)); // Our Mock Client Function
         }
 
     }
@@ -155,7 +155,7 @@ public class NetClass
 
         if (peer != null)
         {
-            ZRoutedRpc.instance.InvokeRoutedRPC(peer.m_uid, "ClientRequest",package);
+            ZRoutedRpc.instance.InvokeRoutedRPC(peer.m_uid, MOD_OPTIONS.MODNAME + "_ClientRequest", package);
         }
     }
     private static void RPC_ClientRequestServer(long sender, ZPackage package)
@@ -242,7 +242,7 @@ public class NetClass
                 if (peer == null) { continue; }
                 Debug.Log(peer.m_uid);
                 if (peer.m_uid == PeerServerUID) { continue; }
-                ZRoutedRpc.instance.InvokeRoutedRPC(peer.m_uid, "ClientSendServer", package);
+                ZRoutedRpc.instance.InvokeRoutedRPC(peer.m_uid, MOD_OPTIONS.MODNAME + "_ClientSendServer", package);
             }
         }
     }
@@ -304,7 +304,7 @@ public class NetClass
         ZPackage package = new ZPackage();
         package.Write(obj.TYPE.ToString() + obj.serialize());
         //RPC_SendNetObjData.SendPackage(ZNet.instance.GetPeers(), package);
-        ZRoutedRpc.instance.InvokeRoutedRPC(ZRoutedRpc.Everybody, "SendNetObjData", package);
+        ZRoutedRpc.instance.InvokeRoutedRPC(ZRoutedRpc.Everybody, MOD_OPTIONS.MODNAME + "_SendNetObjData", package);
     }
     private static void RPC_SendNetObjDataClient(long sender, ZPackage package)
     {
