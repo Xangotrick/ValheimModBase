@@ -24,6 +24,7 @@ public class ManApp
     MethodInfo MethodInfoAdd;
 
     public App.AppToolTip MyTooltip;
+    public KERNEL.AppIGConsole MyIGConsole;
 
 
 
@@ -175,9 +176,12 @@ public class ManApp
 
     public void UpdateAppBehavior()
     {
-
-        //if (MyTooltip == null) { MyTooltip = Add<App.AppToolTip>(); }
+        if (MOD_OPTIONS.IS_IG_CONSOLE)
+        {
+            if (MyIGConsole == null) { MyIGConsole = Add<KERNEL.AppIGConsole>(); }
+        }
     }
+    
 
     public void HandleInputs()
     {
@@ -212,7 +216,7 @@ public class ManApp
     public void Show<T>(params object[] args) where T : PermanentApp, new()
     {
         PermanentApp app = PermanentAppFromT<T>();
-        //if (app == null) { app = Add<T>() as PermanentApp; }
+        if (app == null) { app = Add<T>() as PermanentApp; }
 
         app.Show();
 
