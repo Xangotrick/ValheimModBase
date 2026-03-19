@@ -11,7 +11,6 @@ using System.Reflection;
 using UnityEngine;
 using UnityEngine.UI;
 using static Heightmap;
-using static ManSeason;
 using static System.Net.Mime.MediaTypeNames;
 using Application = UnityEngine.Application;
 using Debug = UnityEngine.Debug;
