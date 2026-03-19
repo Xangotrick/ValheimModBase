@@ -246,7 +246,9 @@ public class UI
 
     public static void Load_UI()
     {
-        DefaultSkin = Data.bundle_ui.LoadAsset<GUISkin>("DefaultSkin");
+        DefaultSkin = new GUISkin();
+        //DefaultSkin = Data.bundle_ui.LoadAsset<GUISkin>("DefaultSkin");
+
     }
     
 }
