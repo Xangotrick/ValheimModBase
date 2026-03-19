@@ -18,8 +18,8 @@ internal class MOD_OPTIONS
     /// Certaines fonctions ne doivent pas être exécutées plusieurs fois à travers les différents mods. Normalement il ne faut pas toucher à cette valeur
     public static bool MASTER_MOD = false;
 
-    public static bool IS_CHEAT_MODE = true;
-    public static bool IS_GOD_MODE = true;
+    public static bool IS_CHEAT_MODE = false;
+    public static bool IS_GOD_MODE = false;
 
-    public static bool IS_IG_CONSOLE = true;
+    public static bool IS_IG_CONSOLE = false;
 }
